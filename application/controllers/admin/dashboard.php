@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
 	
 	public function index()
 	{
-		die('Dshboard');
-		//$this->load->view('welcome_message');
+		//Load template
+		$this->template->load('admin', 'default', 'dashboard');
 	}
 }
