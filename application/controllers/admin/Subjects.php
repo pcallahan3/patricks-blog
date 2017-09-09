@@ -11,8 +11,16 @@ class Subjects extends CI_Controller {
 
 	public function add()
 	{
-		//Load template
-		$this->template->load('admin', 'default', 'subjects/add');
+		//Use form_validation to set validation rules
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]');
+
+		if($this->form_validation->run() == FALSE){
+			//Load template
+			$this->template->load('admin', 'default', 'subjects/add');
+
+		}
+
+		
 	}
 
 	public function edit()
