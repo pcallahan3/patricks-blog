@@ -3,15 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Subjects extends CI_Controller {
 
-	public function index()
-	{
+	public function index(){
 		$data['subjects'] = $this->Subject_model->get_list();
 		//Load template
 		$this->template->load('admin', 'default', 'subjects/index', $data);
 	}
 
-	public function add()
-	{
+	public function add(){
 		//Use form_validation to set validation rules
 		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]');
 
@@ -54,14 +52,80 @@ class Subjects extends CI_Controller {
 		
 	}
 
-	public function edit()
-	{
-		//Load template
-		$this->template->load('admin', 'default', 'subjects/edit');
+	public function edit($id){
+		//Use form_validation to set validation rules
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]');
+
+		if($this->form_validation->run() == FALSE){
+			//Get current subject
+			$data['item'] = $this->Subject_model->get($id);
+
+			//Load template
+			$this->template->load('admin', 'default', 'subjects/edit', $data);
+
+		}
+		else{
+
+			$old_name = $data['item'] = $this->Subject_model->get($id)->name;
+			$new_name = $this->input->post('name');
+
+			//Create Subject POST array
+			$data = array(
+					'name' => $this->input->post('name')
+
+				);
+
+			//Update subject in subjects table
+			$this->Subject_model->update($id, $data);
+
+			//Activity array
+			$data = array(
+					'resource_id' => $this->db->insert_id(),
+					'type' => 'subject',
+					'action' => 'updated', 
+					'user_id' => 1,
+					'message' => 'A subject ('.$old_name.') was renamed ('.$new_name.')'
+
+			);
+
+			//Insert activity into activity table
+			$this->Activity_model->add($data);
+
+			//Set message 
+			$this->session->set_flashdata('success', 'Subject has been updated');
+
+			//Redirect to admin/subject
+			redirect('admin/subjects');
+
+		}
 	}
 
-	public function delete()
-	{
+	public function delete($id){
 		
-	}
+			$name = $data['item'] = $this->Subject_model->get($id)->name;
+
+			//Delete the subject
+			$this->Subject_model->delete($id);
+
+			//Activity array
+			$data = array(
+					'resource_id' => $this->db->insert_id(),
+					'type' => 'subject',
+					'action' => 'deleted', 
+					'user_id' => 1,
+					'message' => 'A subject was deleted'
+
+			);
+
+			//Insert activity into activity table
+			$this->Activity_model->add($data);
+
+			//Set message 
+			$this->session->set_flashdata('success', 'Subject has been deleted');
+
+			//Redirect to admin/subject
+			redirect('admin/subjects');
+
+		}
+	
 }
