@@ -5,8 +5,9 @@ class Subjects extends CI_Controller {
 
 	public function index()
 	{
+		$data['subjects'] = $this->Subject_model->get_list();
 		//Load template
-		$this->template->load('admin', 'default', 'subjects/index');
+		$this->template->load('admin', 'default', 'subjects/index', $data);
 	}
 
 	public function add()
