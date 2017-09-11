@@ -1,14 +1,15 @@
 <h2 class="page-header">Add Pages</h2>
 
+<?php echo validation_errors('<p class="alert alert-danger">'); ?>
 <?php echo form_open('admin/pages/add'); ?>
 	<div class="form-group">
-		<?php echo form_label('Page Name', 'name'); ?>
+		<?php echo form_label('Page Title', 'title'); ?>
 			<?php $data = array(
-						'name' => 'name',
-						'id' => 'name',
+						'name' => 'title',
+						'id' => 'title',
 						'maxlength' => '100',
 						'class' => 'form-control',
-						'value' => set_value('name')
+						'value' => set_value('title')
 					);
 			?>
 			<?php echo form_input($data); ?>
@@ -17,7 +18,7 @@
 	<!--Page subject-->
 	<div class="form-group">
 		<?php echo form_label('Subject', 'subject_id'); ?>
-		<?php echo form_dropdown('subject_id', '$subject_options', 0, array()); ?>
+		<?php echo form_dropdown('subject_id', $subject_options, 0, array('class' => 'form-control')); ?>
 	</div>
 
 	<!--Page body-->
