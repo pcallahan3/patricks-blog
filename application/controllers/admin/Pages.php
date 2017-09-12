@@ -94,20 +94,23 @@ class Pages extends CI_Controller {
 
 		if($this->form_validation->run() == False){
 
+			$data['item'] = $this->Page_model->get($id);
+
 			$subject_options = array();
 			$subject_options[0] = 'Select Subject';
 
 			$subject_list = $this->Subject_model->get_list();
 
-			foreach($subject_list as $subject){
+			foreach($this->Subject_model->get_list() as $subject){
 				$subject_options[$subject->id] = $subject->name;
 			}
 
 			$data['subject_options'] = $subject_options;
 
-
 			//Load template
-			$this->template->load('admin', 'default', 'pages/add', $data);
+			$this->template->load('admin', 'default', 'pages/edit', $data);
+			
+			
 		}
 		else{
 			$slug = str_replace(' ', '-', $this->input->post('title'));
@@ -127,17 +130,17 @@ class Pages extends CI_Controller {
 
 			);
 
-			//Insert Page
-			$this->Page_model->add($data);
+			//Update Page
+			$this->Page_model->update($id, $data);
 
 
 			//Activity array
 			$data = array(
 					'resource_id' => $this->db->insert_id(),
 					'type' => 'page',
-					'action' => 'added', 
+					'action' => 'updated', 
 					'user_id' => 1,
-					'message' => 'A new page was added ('.$data["title"].')'
+					'message' => 'A page was updated ('.$data["title"].')'
 
 			);
 
@@ -145,16 +148,39 @@ class Pages extends CI_Controller {
 			$this->Activity_model->add($data);
 
 			//Set message 
-			$this->session->set_flashdata('success', 'Page has been added');
+			$this->session->set_flashdata('success', 'Page has been updated');
 
 			//Redirect to admin/subject
 			redirect('admin/pages');
+
 		
-		//Load template
-		$this->template->load('admin', 'default', 'pages/edit');
+		}
 	}
 
-	public function delete(){
+	public function delete($id){
+		$title = $data['item'] = $this->Page_model->get($id)->title;
+
+			//Delete the page
+			$this->Page_model->delete($id);
+
+			//Activity array
+			$data = array(
+					'resource_id' => $this->db->insert_id(),
+					'type' => 'page',
+					'action' => 'deleted', 
+					'user_id' => 1,
+					'message' => 'A page was deleted'
+
+			);
+
+			//Insert activity into activity table
+			$this->Activity_model->add($data);
+
+			//Set message 
+			$this->session->set_flashdata('success', 'Page has been deleted');
+
+			//Redirect to admin/subject
+			redirect('admin/pages');
 		
 	}
 }
