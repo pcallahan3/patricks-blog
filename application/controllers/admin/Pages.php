@@ -83,7 +83,7 @@ class Pages extends CI_Controller {
 	}
 
 	public function edit($id){
-//Field Rules
+		//Field Rules
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|min_length[3]');
 		$this->form_validation->set_rules('subject_id', 'Subject', 'trim|required');
 		$this->form_validation->set_rules('body', 'Body', 'trim|required');

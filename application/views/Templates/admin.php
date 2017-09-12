@@ -32,7 +32,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><?php echo anchor('admin', 'Dashboard', 'title="Dashboard Home"') ?></li>
+            <li><?php echo anchor('admin/dashboard', 'Dashboard', 'title="Dashboard Home"') ?></li>
             <li><?php echo anchor('admin/pages', 'Pages', 'title="View Pages"') ?></li>
             <li><?php echo anchor('admin/subjects', 'Subjects', 'title="View Subjects"') ?></li>
             <li><?php echo anchor('admin/users', 'Users', 'title="View Users"') ?></li>
