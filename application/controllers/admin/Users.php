@@ -150,7 +150,8 @@ class Users extends CI_Controller {
 
 	//Login users functionality
 	public function login(){
-		
+		//Load template
+		$this->template->load('admin', 'login', 'users/login');
 	}
 
 	//Logout users functionality
