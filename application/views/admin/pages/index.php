@@ -1,4 +1,5 @@
 <!--Pages index page-->
+
 <h2 class="page-header">Pages</h2>
 <?php if($this->session->flashdata('success')) :  ?>
 
@@ -19,8 +20,10 @@
 		<th>Author</th>
 		<th>Date Created</th>
 	</tr>
-	<!--Loop through the pages table and display data-->
+	
+	 <!--Loop through pages table-->
 	<?php foreach($pages as $page) : ?>
+		<!--Check to see of the page is published or not-->
 		<?php if($page->is_published) : ?>
 			<?php $publish_icon = "glyphicon glyphicon-ok"; ?>
 		<?php else : ?>

@@ -27,11 +27,11 @@
 	<?php foreach($users as $user) : ?>
 
 	<!--Format create_date field in pages table-->
-	<?php $date = strtotime($page->create_date); ?>
+	<?php $date = strtotime($user->create_date); ?>
 	<?php $formatted_date = date('F j,Y,g:i a', $date); ?>
 		<tr>
 			<td><?php echo $user->id; ?></td>
-			<td><?php echo $user->first_name; ?><?php echo $user->last_name; ?></td>
+			<td><?php echo $user->first_name; ?> <?php echo $user->last_name; ?></td>
 			<td><?php echo $user->username; ?></td>
 			<td><?php echo $user->email; ?></td>
 			<td><?php echo $formatted_date; ?></td>

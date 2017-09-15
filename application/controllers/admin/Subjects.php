@@ -1,14 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/*
+Subjects controller
+*/
 class Subjects extends CI_Controller {
 
+	//Index subjects functionality
 	public function index(){
+		//Get a list of all subjects with the get_list() in the subject_model
 		$data['subjects'] = $this->Subject_model->get_list();
-		//Load template
+		//Load template and pass subjects data into template
 		$this->template->load('admin', 'default', 'subjects/index', $data);
 	}
 
+	//Add subjects functionality
 	public function add(){
 		//Use form_validation to set validation rules
 		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]');
@@ -52,6 +58,7 @@ class Subjects extends CI_Controller {
 		
 	}
 
+	//Edit subjects functionality
 	public function edit($id){
 		//Use form_validation to set validation rules
 		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]');
@@ -100,6 +107,7 @@ class Subjects extends CI_Controller {
 		}
 	}
 
+	//Delete subjects functionality
 	public function delete($id){
 		
 			$name = $data['item'] = $this->Subject_model->get($id)->name;

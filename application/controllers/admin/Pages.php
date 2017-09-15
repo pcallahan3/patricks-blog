@@ -1,15 +1,23 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/*
+	Pages controller
+*/
 class Pages extends CI_Controller {
 
+	//Index pages functionality
 	public function index(){
+
+		//Get a list of all pages with the get_list() in the page_model 
 		$data['pages'] = $this->Page_model->get_list();
 
-		//Load template
+		//Load template and pass pages index into template
 		$this->template->load('admin', 'default', 'pages/index', $data);
 	}
 
+	//Add pages functionality
 	public function add(){
 		//Field Rules
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|min_length[3]');
@@ -75,13 +83,14 @@ class Pages extends CI_Controller {
 			//Set message 
 			$this->session->set_flashdata('success', 'Page has been added');
 
-			//Redirect to admin/subject
+			//Redirect to admin/pages
 			redirect('admin/pages');
 		}
 
 		
 	}
 
+	//Edit pages functionalilty
 	public function edit($id){
 		//Field Rules
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|min_length[3]');
@@ -150,15 +159,17 @@ class Pages extends CI_Controller {
 			//Set message 
 			$this->session->set_flashdata('success', 'Page has been updated');
 
-			//Redirect to admin/subject
+			//Redirect to admin/pages
 			redirect('admin/pages');
 
 		
 		}
 	}
 
+	//Delete pages functionalilty
 	public function delete($id){
-		$title = $data['item'] = $this->Page_model->get($id)->title;
+			//Get the $id title 
+			$title = $data['item'] = $this->Page_model->get($id)->title;
 
 			//Delete the page
 			$this->Page_model->delete($id);

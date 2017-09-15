@@ -1,3 +1,5 @@
+<!--Add pages view-->
+
 <h2 class="page-header">Add Pages</h2>
 
 <?php echo validation_errors('<p class="alert alert-danger">'); ?>

@@ -1,11 +1,16 @@
 <?php
 
+/*
+	Activity model
+*/
 
 class Activity_model extends CI_MODEL{
 
 	function __construct(){
 
 		parent::__construct();
+
+		//Activity table
 		$this->table = 'activities';
 	}
 

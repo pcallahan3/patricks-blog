@@ -1,3 +1,5 @@
+<!--Add index page-->
+
 <h2 class="page-header">Add Subject</h2>
 
 <?php echo form_open('admin/subjects/add'); ?>

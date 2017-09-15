@@ -1,4 +1,7 @@
-<h2 class="page-header">Edit Subject</h2>
+<!--Edit index page-->
+
+<h2 class="page-header"
+>Edit Subject</h2>
 
 <?php echo form_open('admin/subjects/edit/'. $item->id); ?>
 	<div class="form-group">
