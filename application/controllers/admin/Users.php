@@ -51,7 +51,7 @@ class Users extends CI_Controller {
 					'type' => 'user',
 					'action' => 'added', 
 					'user_id' => 1,
-					'message' => 'A new user was added ('.$data["title"].')'
+					'message' => 'A new user was added ('.$data["username"].')'
 
 			);
 
@@ -150,8 +150,52 @@ class Users extends CI_Controller {
 
 	//Login users functionality
 	public function login(){
-		//Load template
-		$this->template->load('admin', 'login', 'users/login');
+		//Field Rules
+		
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]');
+		
+
+		if($this->form_validation->run() == FALSE){
+			//Load template
+			$this->template->load('admin', 'login', 'users/login');
+		}
+		else{
+			
+			//Get POST data
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+			$enc_password = md5($password);
+
+			$user_id = $this->User_model->login($username, $enc_password);
+
+			if($user_id){
+				$user_data = array(
+							'user_id' => $user_id,
+							'username' => $username,
+							'logged_in' => true
+					);
+
+					//Set session data
+					$this->session->set_userdata($user_data);
+
+					//Set message 
+					$this->session->set_flashdata('success', 'You are logged in');
+
+					//Redirect to admin
+					redirect('admin/dashboard');
+			}
+			else{
+				//Create error
+				$this->session->set_flashdata('error', 'Invalid login');
+
+				//Redirect to admin login
+				redirect('admin/users/login');
+
+			}
+		}
+
+		
 	}
 
 	//Logout users functionality
