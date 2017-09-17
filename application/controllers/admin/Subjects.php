@@ -6,6 +6,17 @@ Subjects controller
 */
 class Subjects extends CI_Controller {
 
+	function __construct(){
+
+		parent::__construct();
+
+		//Check login
+		if(!$this->session->userdata('logged_in')){
+			redirect('admin/login');
+		}
+
+	}
+
 	//Index subjects functionality
 	public function index(){
 		//Get a list of all subjects with the get_list() in the subject_model

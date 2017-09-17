@@ -7,6 +7,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 class Pages extends CI_Controller {
 
+	function __construct(){
+
+		parent::__construct();
+
+		//Check login
+		if(!$this->session->userdata('logged_in')){
+			redirect('admin/login');
+		}
+
+	}
 	//Index pages functionality
 	public function index(){
 

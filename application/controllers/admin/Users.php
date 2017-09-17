@@ -6,8 +6,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 class Users extends CI_Controller {
 
+	function __construct(){
+
+		parent::__construct();
+
+
+	}
+
 	//Index users functionality
 	public function index(){
+
+		//Check login
+		if(!$this->session->userdata('logged_in')){
+			redirect('admin/login');
+		}
+
 		$data['users'] = $this->User_model->get_list();
 		//Load template
 		$this->template->load('admin', 'default', 'users/index', $data);
@@ -15,6 +28,12 @@ class Users extends CI_Controller {
 
 	//Add users functionality
 	public function add(){
+
+		//Check login
+		if(!$this->session->userdata('logged_in')){
+			redirect('admin/login');
+		}
+
 
 		//Field Rules
 		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|min_length[2]');
@@ -70,6 +89,12 @@ class Users extends CI_Controller {
 
 	//Edit users functionality
 	public function edit($id){
+
+		//Check login
+		if(!$this->session->userdata('logged_in')){
+			redirect('admin/login');
+		}
+
 		//Field Rules
 		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|min_length[2]');
 		$this->form_validation->set_rules('last_name', 'Last Name', 'trim|required|min_length[2]');
@@ -121,6 +146,12 @@ class Users extends CI_Controller {
 
 	//Delete users functionality
 	public function delete($id){
+
+		//Check login
+		if(!$this->session->userdata('logged_in')){
+			redirect('admin/login');
+		}
+
 		//Get username
 		$username = $this->User_model->get($id)->username;
 
@@ -200,6 +231,14 @@ class Users extends CI_Controller {
 
 	//Logout users functionality
 	public function logout(){
-		
+		//Unset user data
+		$this->session->unset_userdata('logged_in');
+		$this->session->unset_userdata('user_id');
+		$this->session->unset_userdata('username');
+		$this->session->sess_destroy();
+
+		//Message
+		$this->session->set_flashdata('success', 'You are logged out' );
+		redirect('admin/users/login');
 	}
 }

@@ -1,6 +1,17 @@
 <?php $atts = array('id' => 'login_form', 'class' => 'form-signin', 'role' => 'form');  ?>
 <?php echo form_open('admin/users/login' ,$atts); ?>
         <h2 class="form-signin-heading">Patricks Blog Admin Login</h2>
+
+        <?php if($this->session->flashdata('success')) :  ?>
+
+        <?php echo '<div class="alert alert-success">'.$this->session->flashdata('success').'</div>' ; ?>
+      <?php endif ;?>
+      <?php if($this->session->flashdata('error')) :  ?>
+
+        <?php echo '<div class="alert alert-danger">'.$this->session->flashdata('success').'</div>' ; ?>
+      <?php endif ;?>
+
+        
         <?php echo validation_errors('<p class="alert alert-danger">'); ?>
         <?php if($this->session->flashdata('success')) :  ?>
           <?php echo '<div class="alert alert-success">'.$this->session->flashdata('success').'</div>' ; ?>

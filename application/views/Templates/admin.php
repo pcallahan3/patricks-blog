@@ -26,7 +26,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><?php echo anchor('admin/dashboard', 'Dashboard', 'title="Dashboard Home"') ?></li>
+            <li><?php echo anchor('admin', 'Dashboard', 'title="Dashboard Home"') ?></li>
             <li><?php echo anchor('admin/pages', 'Pages', 'title="View Pages"') ?></li>
             <li><?php echo anchor('admin/subjects', 'Subjects', 'title="View Subjects"') ?></li>
             <li><?php echo anchor('admin/users', 'Users', 'title="View Users"') ?></li>
@@ -34,7 +34,7 @@
 
            <ul class="nav navbar-nav navbar-right">
             <li><?php echo anchor('/', 'View Website', 'target="_blank"') ?></li>
-            <li><?php echo anchor('users/logout', 'Logout', 'title="Logout"') ?></li>
+            <li><?php echo anchor('admin/users/logout', 'Logout', 'title="Logout"') ?></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
