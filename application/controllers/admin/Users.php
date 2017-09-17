@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /*
 	Users controller
 */
-class Users extends CI_Controller {
+class Users extends Admin_Controller {
 
 	function __construct(){
 

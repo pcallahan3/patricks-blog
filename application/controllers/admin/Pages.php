@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /*
 	Pages controller
 */
-class Pages extends CI_Controller {
+class Pages extends Admin_Controller {
 
 	function __construct(){
 

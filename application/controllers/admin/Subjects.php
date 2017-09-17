@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /*
 Subjects controller
 */
-class Subjects extends CI_Controller {
+class Subjects extends Admin_Controller {
 
 	function __construct(){
 
