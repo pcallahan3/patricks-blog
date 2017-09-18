@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Static Top Navbar Example for Bootstrap</title>
+    <title>Patricks Blog</title>
 
      <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Patricks Blog</a>
+          <a class="navbar-brand" href="#"><?php echo $this->brand; ?></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -64,12 +64,19 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <h1><?php echo $this->banner_heading; ?></h1>
+        <p><?php echo $this->banner_text; ?></p>
         <p>To see the difference between static and fixed top navbars, just scroll.</p>
         <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+         <a class="btn btn-lg btn-primary" href="<?php echo $this->banner_link; ?>" role="button">View navbar docs &raquo;</a>
         </p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <!--Load main view -->
+          <?php $this->load->view($main); ?>
+        </div>
       </div>
 
     </div> <!-- /container -->

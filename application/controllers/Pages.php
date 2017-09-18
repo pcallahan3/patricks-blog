@@ -7,6 +7,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pages extends Public_Controller {
 
 	public function index(){
-		die('Pages/index');
+
+		$data['featured_pages'] = $this->Page_model->get_featured();
+
+		//Load template
+		$this->template->load('public', 'default', 'pages/index', $data);
 	}
 }
