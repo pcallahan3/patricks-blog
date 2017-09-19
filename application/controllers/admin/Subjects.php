@@ -50,7 +50,7 @@ class Subjects extends Admin_Controller {
 					'resource_id' => $this->db->insert_id(),
 					'type' => 'subject',
 					'action' => 'added', 
-					'user_id' => 1,
+					'user_id' =>  $this->session->userdata('user_id'),
 					'message' => 'A new subject was added ('.$data["name"].')'
 
 			);
@@ -101,7 +101,7 @@ class Subjects extends Admin_Controller {
 					'resource_id' => $this->db->insert_id(),
 					'type' => 'subject',
 					'action' => 'updated', 
-					'user_id' => 1,
+					'user_id' =>  $this->session->userdata('user_id'),
 					'message' => 'A subject ('.$old_name.') was renamed ('.$new_name.')'
 
 			);
@@ -131,7 +131,7 @@ class Subjects extends Admin_Controller {
 					'resource_id' => $this->db->insert_id(),
 					'type' => 'subject',
 					'action' => 'deleted', 
-					'user_id' => 1,
+					'user_id' =>  $this->session->userdata('user_id'),
 					'message' => 'A subject was deleted'
 
 			);

@@ -23,8 +23,8 @@ class Subject_model extends CI_MODEL{
 
 	//Get subject $id 
 	public function get($id){
-		$query = $this->db->get($this->table);
 		$this->db->where('id', $id);
+		$query = $this->db->get($this->table);
 		return $query->row();
 	}
 

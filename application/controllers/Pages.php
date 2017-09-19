@@ -13,4 +13,13 @@ class Pages extends Public_Controller {
 		//Load template
 		$this->template->load('public', 'default', 'pages/index', $data);
 	}
+
+	public function show($slug){
+
+		$data['page'] = $this->Page_model->get_by_slug();
+
+		//Load template
+		$this->template->load('public', 'default', 'pages/show', $data);
+
+	}
 }
