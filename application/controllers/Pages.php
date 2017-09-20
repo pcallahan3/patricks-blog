@@ -12,6 +12,8 @@ class Pages extends Public_Controller {
 
 		//Load template
 		$this->template->load('public', 'default', 'pages/index', $data);
+		
+
 	}
 
 	public function show($slug){

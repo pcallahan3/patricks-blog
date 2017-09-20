@@ -29,11 +29,11 @@ class MY_Controller extends CI_Controller{
 			$this->pages = $this->menu->get_pages();
 
 			//Brand logo 
-			$this->brand = 'Patricks Blog';
+			$this->brand = 'Patricks Software Blog';
 
 			//Banner
-			$this->banner_heading = 'Welcome to Patricks Blog';
-			$this->banner_text = 'Quick example of a banner header';
+			$this->banner_heading = 'Welcome to Patricks Software Blog';
+			//$this->banner_text = '';
 			$this->banner_link = 'pages/show/our-team';
 			
 		}

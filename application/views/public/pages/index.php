@@ -1,11 +1,22 @@
 <?php if($featured_pages) : ?>
-
-
 	<?php foreach($featured_pages as $page) :?>
-		<div class="featured-page">
-			<h2 class="page-header"><?php echo $page->title; ?></h2>
-			<?php echo $page->body; ?>
-		</div>
+		<div class="container">
+    	<div class="row">
+    		<div class="col-md-4">
+    			<ul class="list-group">
+					<div class="featured-page">
+						<!--Render page title and body-->
+						<h2 class="page-header text-center"><?php echo $page->title; ?></h2>
+						<?php echo $page->body; ?>
+					</div>
+				</ul>
+    		</div>
 	<?php endforeach; ?>
-	
 <?php endif; ?>
+
+
+
+
+
+
+    		

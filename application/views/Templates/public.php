@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Patricks Blog</title>
+    <title>Patricks Software Blog</title>
 
      <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -24,19 +24,14 @@
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+         
           <a class="navbar-brand" href="#"><?php echo $this->brand; ?></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
           <li><a href="<?php echo base_url(); ?>">Home</a></li>
           <?php foreach($this->pages as $page) : ?>
-            <li><a href="?php echo base_url(); ?>pages/show<?php echo $page->slug; ?>"><?php echo $page->title; ?></a></li>
+            <li><a href="<?php echo base_url(); ?>pages/show<?php echo $page->slug; ?>"><?php echo $page->title; ?></a></li>
           <?php endforeach; ?>
            
               </ul>
@@ -45,15 +40,19 @@
       </div>
     </nav>
 
+   
 
     <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1><?php echo $this->banner_heading; ?></h1>
-        <p><?php echo $this->banner_text; ?></p>
-         <a class="btn btn-lg btn-primary" href="<?php echo $this->banner_link; ?>" role="button">View navbar docs &raquo;</a>
-        </p>
+    
+      <div class="container text-center">
+         <img src="<?php echo base_url('imgs/landing_page_img.jpg'); ?>" class="rounded" alt="Software Development" width="600" />
+       </div>
+       
+        <!-- These globals are located in the application/core/MY_Controller.php file-->
+        <h1 class="text-center"><?php echo $this->banner_heading; ?></h1>
+        <!--<p><?php //echo $this->banner_text; ?></p>-->
+        <p class="text-center">This blog has random articles on computer science concepts</p>
       </div>
 
       <div class="row">
