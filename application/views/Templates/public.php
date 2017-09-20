@@ -29,9 +29,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-          <li><a href="<?php echo base_url(); ?>">Home</a></li>
+       
           <?php foreach($this->pages as $page) : ?>
-            <li><a href="<?php echo base_url(); ?>pages/show<?php echo $page->slug; ?>"><?php echo $page->title; ?></a></li>
+               <li><a href="<?php echo base_url(); ?>">Home</a></li>
+            <li><a href="<?php echo base_url(); ?>pages/show/<?php echo $page->slug; ?>"><?php echo $page->title; ?></a></li>
           <?php endforeach; ?>
            
               </ul>

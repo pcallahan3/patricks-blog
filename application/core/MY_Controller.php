@@ -34,7 +34,9 @@ class MY_Controller extends CI_Controller{
 			//Banner
 			$this->banner_heading = 'Welcome to Patricks Software Blog';
 			//$this->banner_text = '';
-			$this->banner_link = 'pages/show/our-team';
+			$this->banner_link = 'pages/pageview';
+
+		
 			
 		}
 	}
