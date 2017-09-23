@@ -44,6 +44,7 @@ class User_model extends CI_MODEL{
 		$this->db->delete($this->table);
 	}
 
+	//Login in usern and check password
 	public function login($username, $password){
 		$this->db->select('*');
 		$this->db->from($this->table);
@@ -61,6 +62,7 @@ class User_model extends CI_MODEL{
 			return false;
 		}
 	}
+
 }
 
 

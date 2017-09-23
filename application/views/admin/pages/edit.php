@@ -25,18 +25,34 @@
 
 	<!--Page body-->
 	<div class="form-group">
-		<?php echo form_label('Body', 'subject_id');  ?>
+		<?php echo form_label('Body 1', 'subject_id');  ?>
 		<?php
 			$data = array(
-					'name'    => 'body',
-					'id'      => 'body',
+					'name'    => 'body1',
+					'id'      => 'body1',
 					'class'   => 'form-control',
-					'value'   => $item->body
+					'value'   => $item->body1
 
 			);
 		?>
 		<?php echo form_textarea($data); ?>
 	</div>
+
+	<!--Page body-->
+	<div class="form-group">
+		<?php echo form_label('Body 2', 'subject_id');  ?>
+		<?php
+			$data = array(
+					'name'    => 'body2',
+					'id'      => 'body2',
+					'class'   => 'form-control',
+					'value'   => $item->body2
+
+			);
+		?>
+		<?php echo form_textarea($data); ?>
+	</div>
+
 
 	<!--Publish-->
 	<?php 

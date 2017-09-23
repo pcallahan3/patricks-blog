@@ -27,12 +27,24 @@ class Pages extends Admin_Controller {
 		$this->template->load('admin', 'default', 'pages/index', $data);
 	}
 
+	//Index pages functionality
+	public function test_index(){
+
+		//Get a list of all pages with the get_list() in the page_model 
+		$data['users'] = $this->User_model->get_list();
+
+		//Load template and pass pages index into template
+		$this->template->load('admin', 'default', 'pages/test_index', $data);
+		
+	}
+
 	//Add pages functionality
 	public function add(){
 		//Field Rules
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|min_length[3]');
 		$this->form_validation->set_rules('subject_id', 'Subject', 'trim|required');
-		$this->form_validation->set_rules('body', 'Body', 'trim|required');
+		$this->form_validation->set_rules('body1', 'Body1', 'trim|required');
+		$this->form_validation->set_rules('body2', 'Body2', 'trim|required');
 		$this->form_validation->set_rules('is_published', 'Published', 'required');
 		$this->form_validation->set_rules('is_featured', 'Feature', 'required');
 		$this->form_validation->set_rules('order', 'Order', 'integer');
@@ -64,7 +76,8 @@ class Pages extends Admin_Controller {
 					'title' 		=> $this->input->post('title'),
 					'slug'  		=> $slug,
 					'subject_id'    => $this->input->post('subject_id'),
-					'body'          => $this->input->post('body'),
+					'body1'          => $this->input->post('body1'),
+					'body2'          => $this->input->post('body2'),
 					'is_published'  => $this->input->post('is_published'),
 					'is_featured'   => $this->input->post('is_featured'),
 					'in_menu'       => $this->input->post('in_menu'),
@@ -105,7 +118,8 @@ class Pages extends Admin_Controller {
 		//Field Rules
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|min_length[3]');
 		$this->form_validation->set_rules('subject_id', 'Subject', 'trim|required');
-		$this->form_validation->set_rules('body', 'Body', 'trim|required');
+		$this->form_validation->set_rules('body1', 'Body1', 'trim|required');
+		$this->form_validation->set_rules('body2', 'Body2', 'trim|required');
 		$this->form_validation->set_rules('is_published', 'Published', 'required');
 		$this->form_validation->set_rules('is_featured', 'Feature', 'required');
 		$this->form_validation->set_rules('order', 'Order', 'integer');
@@ -140,7 +154,8 @@ class Pages extends Admin_Controller {
 					'title' 		=> $this->input->post('title'),
 					'slug'  		=> $slug,
 					'subject_id'    => $this->input->post('subject_id'),
-					'body'          => $this->input->post('body'),
+					'body1'          => $this->input->post('body1'),
+					'body2'          => $this->input->post('body2'),
 					'is_published'  => $this->input->post('is_published'),
 					'is_featured'   => $this->input->post('is_featured'),
 					'in_menu'       => $this->input->post('in_menu'),
