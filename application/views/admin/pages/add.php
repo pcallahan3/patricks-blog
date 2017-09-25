@@ -53,6 +53,20 @@
 		<?php echo form_textarea($data); ?>
 	</div>
 
+	<!--Spot for the file upload integration-->
+	<div class="form-group">
+		<?php echo form_label('File Name', 'file_name'); ?>
+			<?php $data = array(
+						'name' => 'file_name',
+						'id' => 'file_name',
+						'maxlength' => '255',
+						'class' => 'form-control',
+						'value' => set_value('file_name')
+					);
+			?>
+			<?php echo form_upload($data); ?>
+	</div>
+
 
 	<!--Publish-->
 	<div class="form-group">

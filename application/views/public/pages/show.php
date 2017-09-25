@@ -6,10 +6,11 @@
 
 
 <h2 class="page-header text-center"><?php echo $page->title; ?>
-	<h6 class="text center"> <strong>Created on: <?php echo $formatted_date ?><br></strong></h6>
+	<h6 class="text center"> <strong>Created on: <?php echo $formatted_date; ?><br></strong></h6>
 </h2>
 
-
+<!--Spot for image integration-->
 <h5 class="text center"><?php echo $page->body1; ?></h5>
 <h5 class="text center"><?php echo $page->body2; ?></h5>
+
 

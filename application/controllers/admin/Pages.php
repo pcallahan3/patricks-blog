@@ -78,6 +78,7 @@ class Pages extends Admin_Controller {
 					'subject_id'    => $this->input->post('subject_id'),
 					'body1'          => $this->input->post('body1'),
 					'body2'          => $this->input->post('body2'),
+					'file_name'     => $this->input->post('file_name'),
 					'is_published'  => $this->input->post('is_published'),
 					'is_featured'   => $this->input->post('is_featured'),
 					'in_menu'       => $this->input->post('in_menu'),
